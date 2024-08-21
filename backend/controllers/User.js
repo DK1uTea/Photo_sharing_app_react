@@ -2,6 +2,7 @@ import UserModel from "../models/UserModel.js";
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import dotenv from 'dotenv';
+import mongoose from "mongoose";
 
 dotenv.config();
 
@@ -35,6 +36,7 @@ export const getUserInfor = async (req, res) => {
 // user register
 export const registerUser = async (req, res) => {
     const { email, password, first_name, last_name, description, location, occupation } = req.body;
+    console.log('New user infor', req.body);
     try {
         // Check if the email already exists
         const existingUser = await UserModel.findOne({ email });
@@ -53,10 +55,11 @@ export const registerUser = async (req, res) => {
             location,
             occupation,
         });
-        
+        console.log('New user account: ', user);
         await user.save();
         res.status(201).send('User registered successfully');
     } catch (error) {
+        console.log('Error', error);
         res.status(500).send('Error registering user');
     }
 };

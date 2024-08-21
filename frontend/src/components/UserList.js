@@ -12,7 +12,7 @@ export default function UserList() {
 
   useEffect(() => {
     // Gọi API để lấy danh sách người dùng khi component được mount
-    fetch('http://localhost:3001/user/list')
+    fetch('http://localhost:3001/api/user/list')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

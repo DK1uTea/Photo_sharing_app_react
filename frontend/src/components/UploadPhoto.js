@@ -26,7 +26,7 @@ export default function UploadPhoto() {
     formData.append('userId', JSON.parse(localStorage.getItem('user'))._id);
 
     try {
-      await axios.post('http://localhost:3001/upload', formData, {
+      await axios.post('http://localhost:3001/api/uploadNewPhoto', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

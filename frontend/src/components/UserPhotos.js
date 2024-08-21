@@ -65,7 +65,7 @@ export default function UserPhotos({ userId: propUserId }) {
 
   const fetchPhotosWithComments = async (userId) => {
     try {
-      const response = await fetch(`http://localhost:3001/photosOfUser/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/photosOfUser/${userId}`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -75,7 +75,7 @@ export default function UserPhotos({ userId: propUserId }) {
       const commentsData = {};
       for (const photo of data) {
         try {
-          const response = await axios.get(`http://localhost:3001/commentsOfPhoto/${photo._id}`);
+          const response = await axios.get(`http://localhost:3001/api/commentsOfPhoto/${photo._id}`);
           commentsData[photo._id] = response.data;
         } catch (error) {
           console.error('There was an error fetching the comments!', error);
@@ -108,7 +108,7 @@ export default function UserPhotos({ userId: propUserId }) {
     }
   
     try {
-      const response = await axios.post('http://localhost:3001/comments', {
+      const response = await axios.post('http://localhost:3001/api/addComment', {
         commentText: newComments[photoId],
         userId: currentUserId,
         photoId: photoId,

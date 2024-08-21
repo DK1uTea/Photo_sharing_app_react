@@ -8,7 +8,7 @@ export default function UserDetail({userId: propUserId}) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/user/${userId}`)
+    fetch(`http://localhost:3001/api/user/${userId}`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
