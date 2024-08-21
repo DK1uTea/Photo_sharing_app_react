@@ -15,7 +15,7 @@ import path from 'path';
 
 dotenv.config();
 
-const URI = 'mongodb+srv://quangtuan9102003:dqt9102003database@cluster0.wyw9g69.mongodb.net/photo_sharing_db?retryWrites=true&w=majority&appName=Cluster0';
+const URI = process.env.URI_DB;
 
 const secret = process.env.JWT_SECRET;
 
